@@ -1,6 +1,5 @@
-clc; 
-clear; 
-close all;
+
+clc; clear; close all;
 
 Font_size=22;
 
