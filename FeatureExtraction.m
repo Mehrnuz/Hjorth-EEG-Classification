@@ -27,7 +27,21 @@ function [HjorthActivity, HjorthMobility, HjorthComplexity] = FeatureExtraction(
 % - The function concatenates the epochs for each subject sequentially.
 % - For each subject, all epochs are processed and appended.
 % - After completing one subject, the next subject's epochs are concatenated to the first.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  Ref.:
+%  [1]  Saghab Torbati, M.; Zandbagleh, A.; Daliri, M.R.; Ahmadi, A.; Rostami, R.; Kazemi, R. 
+%       Explainable AI for Bipolar Disorder Diagnosis Using Hjorth Parameters. Diagnostics 2025, 15, 316. 
+%       https://doi.org/10.3390/diagnostics15030316 
+% 
+% If you use the code, please make sure that you cite Reference [1]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Authors:  Mehrnaz Saghab Torbati and Ahmad Zandbagleh
+% Emails: mehrnaz.s.torbati@ieee.org and ahmad.zand.elec@gmail.com
+% 23-Sep-2024
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     % Initialize Hjorth parameters
     HjorthActivity = zeros(num_frequencybands, num_channels, num_epochs * num_subjects);
@@ -43,7 +57,7 @@ function [HjorthActivity, HjorthMobility, HjorthComplexity] = FeatureExtraction(
         30, 45    % Gamma
     ];
 
-    % Precompute filter coefficients for each band
+    % Precompute filter coefficients for each frequency band
     filters = cell(num_frequencybands, 2); % Store b and a coefficients in a cell array
     for i = 1:num_frequencybands
         [filters{i, 1}, filters{i, 2}] = butter(filt_order, frequencyBands(i, :) / (fs / 2), 'bandpass');
