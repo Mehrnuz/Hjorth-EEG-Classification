@@ -12,7 +12,20 @@ function lime_val = SVM_Classification_LIME(class1_data, class2_data, num_import
 %
 % Outputs:
 % - lime_val: Importance values across all channels from LIME.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%  Ref.:
+%  [1]  Saghab Torbati, M.; Zandbagleh, A.; Daliri, M.R.; Ahmadi, A.; Rostami, R.; Kazemi, R. 
+%       Explainable AI for Bipolar Disorder Diagnosis Using Hjorth Parameters. Diagnostics 2025, 15, 316. 
+%       https://doi.org/10.3390/diagnostics15030316 
+% 
+% If you use the code, please make sure that you cite Reference [1]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Authors:  Mehrnaz Saghab Torbati and Ahmad Zandbagleh
+% Emails: mehrnaz.s.torbati@ieee.org and ahmad.zand.elec@gmail.com
+% 23-Sep-2024
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     % Combine data and labels
     combined_data = [class1_data, class2_data];
