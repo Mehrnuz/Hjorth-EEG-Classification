@@ -2,7 +2,7 @@ function [acc, sens, spec] = FeatureSelection_Classification(featuresclass1, fea
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Function for Feature Selection & Multi-Classifier Evaluation
 % This function performs classification using multiple classifiers (SVM, Random Forest, KNN, and LDA) 
-% and evaluates their performance based on Leave-One-Out Cross-Validation (LOOCV).
+% and evaluates their performance based on Leave-One-Subject-Out Cross-Validation (LOSOCV).
 %
 % Inputs:
 % - featuresclass1: Feature matrix for class 1. (Features x Instances (Includes both subjects and epochs)) 
@@ -18,13 +18,25 @@ function [acc, sens, spec] = FeatureSelection_Classification(featuresclass1, fea
 % - acc: Average accuracy for each classifier (SVM, RF, LDA, KNN).
 % - sens: Average sensitivity for each classifier (SVM, RF, LDA, KNN).
 % - spec: Average specificity for each classifier (SVM, RF, LDA, KNN).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%  Ref.:
+%  [1]  Saghab Torbati, M.; Zandbagleh, A.; Daliri, M.R.; Ahmadi, A.; Rostami, R.; Kazemi, R. 
+%       Explainable AI for Bipolar Disorder Diagnosis Using Hjorth Parameters. Diagnostics 2025, 15, 316. 
+%       https://doi.org/10.3390/diagnostics15030316 
+% 
+% If you use the code, please make sure that you cite Reference [1]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Authors:  Mehrnaz Saghab Torbati and Ahmad Zandbagleh
+% Emails: mehrnaz.s.torbati@ieee.org and ahmad.zand.elec@gmail.com
+% 23-Sep-2024
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     % Initialize performance metrics
-    acc = zeros(4, 1); % Accuracy for each classifier
-    sens = zeros(4, 1); % Sensitivity for each classifier
-    spec = zeros(4, 1); % Specificity for each classifier
+    acc = zeros(4, 1); % Accuracy
+    sens = zeros(4, 1); % Sensitivity
+    spec = zeros(4, 1); % Specificity
 
     % Combine data from both classes for cross-validation
     combined_data = [featuresclass1, featuresclass2];
